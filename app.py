@@ -739,8 +739,17 @@ div[data-testid="stDecoration"] { display: none !important; }
               font-weight: 800; font-size: .85rem; border-radius: 999px; padding: .3rem .85rem; }
 
 /* 하늘색 3D 선택 블록: 반짝이고 매끄러운 둥근 모양 */
-div[class*="st-key-opt_"] .stButton, div[class*="st-key-opt_"] .stButton > button { width: 100%; }
-div[class*="st-key-opt_"] .stButton > button {
+/* Streamlit이 버튼을 감싸는 모든 칸을 칸 너비만큼 늘림 → 박스 너비 통일 */
+div[class*="st-key-opt_"] [data-testid="stElementContainer"],
+div[class*="st-key-opt_"] [data-testid="stButton"],
+div[class*="st-key-opt_"] .stButton,
+div[class*="st-key-opt_"] .stButton > div,
+div[class*="st-key-opt_"] .stButton button,
+div[class*="st-key-main_"] [data-testid="stElementContainer"],
+div[class*="st-key-main_"] .stButton,
+div[class*="st-key-main_"] .stButton > div,
+div[class*="st-key-main_"] .stButton button { width: 100% !important; max-width: 100% !important; }
+div[class*="st-key-opt_"] .stButton button {
   height: 150px !important; min-height: 150px; max-height: 150px; padding: 1rem 1.3rem; border: none !important; border-radius: 32px;
   display: flex !important; align-items: center; justify-content: center; white-space: normal !important;
   background: radial-gradient(120% 90% at 30% 10%, #ffffff 0%, rgba(255,255,255,0) 45%),
@@ -750,33 +759,33 @@ div[class*="st-key-opt_"] .stButton > button {
   color: #174a78; transition: transform .12s ease, box-shadow .12s ease; margin-bottom: 16px;
   position: relative; overflow: hidden;
 }
-div[class*="st-key-opt_"] .stButton > button::after {
+div[class*="st-key-opt_"] .stButton button::after {
   content: ""; position: absolute; left: 12%; right: 12%; top: 7px; height: 26%;
   border-radius: 999px; background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,0));
   pointer-events: none;
 }
-div[class*="st-key-opt_"] .stButton > button * {
+div[class*="st-key-opt_"] .stButton button * {
   white-space: normal !important; overflow: visible !important; text-overflow: clip !important;
   max-width: 100% !important; height: auto !important;
 }
-div[class*="st-key-opt_"] .stButton > button p { font-size: 1.05rem; font-weight: 800; line-height: 1.5; margin: 0;
+div[class*="st-key-opt_"] .stButton button p { font-size: 1.05rem; font-weight: 800; line-height: 1.5; margin: 0;
   word-break: keep-all; overflow-wrap: anywhere; text-align: center; position: relative; z-index: 1; }
-div[class*="st-key-opt_"] .stButton > button:hover {
+div[class*="st-key-opt_"] .stButton button:hover {
   transform: translateY(-3px); color: #0f3f6c;
   box-shadow: 0 12px 0 #72bbec, 0 26px 34px rgba(71,150,214,.32),
               inset 0 -8px 16px rgba(90,170,235,.35), inset 0 4px 0 rgba(255,255,255,.9);
 }
-div[class*="st-key-opt_"] .stButton > button:active {
+div[class*="st-key-opt_"] .stButton button:active {
   transform: translateY(7px);
   box-shadow: 0 2px 0 #72bbec, 0 6px 12px rgba(71,150,214,.25), inset 0 3px 10px rgba(70,140,205,.35);
 }
 
 /* 이전으로 돌아가기 */
 div[class*="st-key-back_"] { text-align: center; }
-div[class*="st-key-back_"] .stButton > button {
+div[class*="st-key-back_"] .stButton button {
   border: none !important; background: transparent; color: #7f9cb6; box-shadow: none; margin: 0 auto; display: block;
 }
-div[class*="st-key-back_"] .stButton > button:hover { color: #2f86d1; background: #f2f9ff; }
+div[class*="st-key-back_"] .stButton button:hover { color: #2f86d1; background: #f2f9ff; }
 
 /* 비행기 진행 바 */
 .progress-wrap { margin: 1.2rem 0 .4rem; }
@@ -792,15 +801,15 @@ div[class*="st-key-back_"] .stButton > button:hover { color: #2f86d1; background
 .progress-txt b { color: #2f86d1; }
 
 /* 큰 파란 버튼 */
-div[class*="st-key-main_"] .stButton > button {
+div[class*="st-key-main_"] .stButton button {
   width: 100%; min-height: 62px; border: none !important; border-radius: 999px;
   background: radial-gradient(120% 90% at 30% 0%, rgba(255,255,255,.45) 0%, rgba(255,255,255,0) 50%),
               linear-gradient(180deg, #6cc0ff 0%, #3b9cf0 100%);
   box-shadow: 0 7px 0 #2a7bc8, 0 16px 26px rgba(59,156,240,.35); transition: transform .12s ease, box-shadow .12s ease;
 }
-div[class*="st-key-main_"] .stButton > button p { font-size: 1.15rem; font-weight: 800; color: #fff; }
-div[class*="st-key-main_"] .stButton > button:hover { transform: translateY(-2px); }
-div[class*="st-key-main_"] .stButton > button:active { transform: translateY(6px); box-shadow: 0 1px 0 #2a7bc8; }
+div[class*="st-key-main_"] .stButton button p { font-size: 1.15rem; font-weight: 800; color: #fff; }
+div[class*="st-key-main_"] .stButton button:hover { transform: translateY(-2px); }
+div[class*="st-key-main_"] .stButton button:active { transform: translateY(6px); box-shadow: 0 1px 0 #2a7bc8; }
 div[data-testid="stTextInput"] input { border-radius: 16px; text-align: center; font-size: 1.05rem; padding: .8rem; }
 
 /* ---------- 결과: 탑승권 ---------- */
@@ -886,8 +895,8 @@ div[data-testid="stTextInput"] input { border-radius: 16px; text-align: center; 
   .hero h1 { font-size: 2rem; }
   .q-text { font-size: 1.25rem; } .q-num { font-size: 1.6rem; }
   .q-pic { height: 170px; } .q-pic .ill { width: 112px; height: 112px; }
-  div[class*="st-key-opt_"] .stButton > button { height: 150px !important; min-height: 150px; max-height: 150px; padding: .8rem .9rem; }
-  div[class*="st-key-opt_"] .stButton > button p { font-size: .95rem; }
+  div[class*="st-key-opt_"] .stButton button { height: 150px !important; min-height: 150px; max-height: 150px; padding: .8rem .9rem; }
+  div[class*="st-key-opt_"] .stButton button p { font-size: .95rem; }
   .bp-route .code { font-size: 2rem; }
   .bp-grid { grid-template-columns: repeat(2, 1fr); }
   .bp-photo { height: 200px; }
